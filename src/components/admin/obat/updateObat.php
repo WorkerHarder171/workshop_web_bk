@@ -1,9 +1,9 @@
 <?php
-
-include 'src/config/koneksi.php';
+include '../../../config/koneksi.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $id = $_POST["id"];
+
     $nama_obat = $_POST["nama_obat"];
     $kemasan = $_POST["kemasan"];
     $harga = $_POST["harga"];
@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (mysqli_query($mysqli, $query)) {
         echo '<script>';
         echo 'alert("Data obat berhasil diubah!");';
-        echo 'window.location.href = "../../index.php";';
+        echo 'window.location.href = "../../../../index.php";';
         echo '</script>';
         exit();
     } else {
