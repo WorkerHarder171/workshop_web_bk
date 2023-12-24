@@ -55,7 +55,6 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-
             <!-- card -->
             <div class="card">
 
@@ -74,7 +73,7 @@
     <table class="table table-hover text-nowrap">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>No.</th>
                 <th>Nama Obat</th>
                 <th>Kemasan</th>
                 <th>Harga</th>

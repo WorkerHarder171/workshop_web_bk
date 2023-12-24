@@ -13,9 +13,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <title>AdminLTE 3 | Starter</title>
 
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="modules/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="modules/dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -23,26 +23,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <body class="hold-transition sidebar-mini">
 
     <div class="wrapper">
-        <!-- Navbar  -->
-        <?php include("src/components/navigation/navbar/Navbar.php") ?>
+<!-- Navbar -->
+<?= include("src/components/navigation/navbar/Navbar.php") ?>
+<!-- SideBar -->
+<?= include("src/components/navigation/side-bar/SideBar.php") ?>
+<!-- Pages Obat -->
+<?= include("src/pages/Obat.php") ?>
+<!-- Footer -->
+<?= include("src/components/navigation/footer/Footer.php")?>
 
-        <!-- Sidebar -->
-        <?php include("src/components/navigation/side-bar/SideBar.php") ?>
-
-        <!-- Pages Obat -->
-        <?php include("src/pages/Obat.php") ?>
-
-        <!-- Footer -->
-        <?php include("src/components/navigation/footer/Footer.php") ?>
     </div>
 
 <!-- Script All -->
     <!-- jQuery -->
-    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <script src="modules/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
-    <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="modules/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="assets/dist/js/adminlte.min.js"></script>
+    <script src="modules/dist/js/adminlte.min.js"></script>
 </body>
 
 </html>
