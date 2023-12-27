@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html lang="en">
 
 <head>
@@ -21,26 +17,58 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </head>
 
 <body class="hold-transition sidebar-mini">
-
     <div class="wrapper">
-<!-- Navbar -->
-<?= include("src/components/navigation/navbar/Navbar.php") ?>
-<!-- SideBar -->
-<?= include("src/components/navigation/side-bar/SideBar.php") ?>
-<!-- Pages Obat -->
-<?= include("src/pages/Obat.php") ?>
-<!-- Footer -->
-<?= include("src/components/navigation/footer/Footer.php")?>
-
+        <!-- Navbar -->
+        <?= include("src/components/navigation/navbar/Navbar.php") ?>
+        <!-- SideBar -->
+        <?= include("src/components/navigation/side-bar/SideBar.php") ?>
+        <!-- content -->
+        <div class="content-wrapper">
+            <div class="content-header">
+            <div id="content"></div>
+        </div>
+        </div>
+        <!-- Footer -->
+        <?= include("src/components/navigation/footer/Footer.php") ?>
     </div>
 
-<!-- Script All -->
+    <!-- Script All -->
+
     <!-- jQuery -->
-    <script src="modules/plugins/jquery/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="modules/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="modules/dist/js/adminlte.min.js"></script>
+
+    <script>
+$(document).ready(function () {
+$('#content').load('src/components/main-content/MainContent.php')
+$('.menu').click(function (e){
+e.preventDefault();
+var menu =$(this).attr('id');
+
+if(menu == "menuDashboard"){
+$('.nav-link').removeClass('active')
+$(this).addClass('active')
+$('#content').load('src/components/main-content/MainContent.php');
+}else if(menu == "menuDokter"){
+    $('.nav-link').removeClass('active')
+$(this).addClass('active')
+$('#content').load('src/components/admin/dokter/dokter.php');
+}else if(menu == "menuObat"){
+    $('.nav-link').removeClass('active')
+$(this).addClass('active')
+$('#content').load('src/components/admin/obat/Obat.php');
+}else if(menu == "menuPasien"){
+    $('.nav-link').removeClass('active')
+$(this).addClass('active')
+$('#content').load('src/components/admin/pasien/pasien.php');
+}
+})
+})
+    </script>
+
 </body>
 
 </html>

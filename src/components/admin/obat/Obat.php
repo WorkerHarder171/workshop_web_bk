@@ -82,7 +82,7 @@
         </thead>
         <tbody>
             <?php
-            include 'src/config/koneksi.php';
+            include '../../../config/koneksi.php';
             $query = "SELECT * FROM obat";
             $no = 1;
             $result = mysqli_query($mysqli, $query);
@@ -132,7 +132,9 @@
                 </div>
             </div>
             <!-- end Modal Edit Obat -->
-            <?php } ?>
+            <?php }
+            mysqli_close($mysqli);
+            ?>
         </tbody>
     </table>
 </div>
