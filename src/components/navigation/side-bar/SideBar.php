@@ -33,25 +33,21 @@
 
                     <li class="nav-item">
                             <a href="src/components/main-content/MainContent.php" id="menuDashboard" class="nav-link active menu">
-                                <i class="far fa-circle nav-icon"></i>
                                 <p>Dashboard</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="src/components/admin/dokter/dokter.php" id="menuDokter" class="nav-link menu">
-                                <i class="far fa-circle nav-icon"></i>
                                 <p>Dokter</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="src/components/admin/obat/Obat.php" id="menuObat" class="nav-link menu">
-                                <i class="far fa-circle nav-icon"></i>
                                 <p>Obat</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="src/components/admin/pasien/pasien.php" id="menuPasien" class="nav-link menu">
-                                <i class="far fa-circle nav-icon"></i>
                                 <p>Pasien</p>
                             </a>
                         </li>

@@ -10,10 +10,12 @@ if ($mysqli) {
         $query = "INSERT INTO obat (nama_obat, kemasan, harga) VALUES ('$nama_obat', '$kemasan', '$harga')";
 
         if (mysqli_query($mysqli, $query)) {
-            echo '<script>';
-            echo 'alert("Data obat berhasil ditambahkan!");';
-            echo 'window.location.href = "../../../../index.php";';
-            echo '</script>';
+?>
+            <script>
+           alert("Data obat berhasil ditambahkan!")
+           window.location.href = "../../../../index.php"
+            </script>
+<?php
             exit();
         } else {
             echo "Error: " . $query . "<br>" . mysqli_error($mysqli);

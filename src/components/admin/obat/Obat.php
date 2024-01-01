@@ -81,60 +81,62 @@
             </tr>
         </thead>
         <tbody>
-            <?php
+        <?php
             include '../../../config/koneksi.php';
             $query = "SELECT * FROM obat";
             $no = 1;
             $result = mysqli_query($mysqli, $query);
             while ($row = mysqli_fetch_assoc($result)) {
-            ?>
-            <tr>
-                <td><?php echo $no++; ?></td>
-                <td><?php echo $row['nama_obat']; ?></td>
-                <td><?php echo $row['kemasan'] ?></td>
-                <td><?php echo $row['harga']?></td>
-                <td class='d-flex align-items-center justify-content-center'>
-                    <button type='button' class='btn btn-sm btn-warning edit-btn mx-1' data-toggle='modal' data-target='#myModal<?php echo $row['id']; ?>'>Edit</button>
-                    <a href='src/components/admin/obat/HapusObat.php?id=<?php echo $row['id']; ?>' class='btn btn-sm btn-danger mx-1' onclick='return confirm("Anda yakin ingin hapus?");'>Hapus</a>
-                </td>
-            </tr>
-            <!-- Modal Edit Obat  -->
-            <div class='modal fade' id='myModal<?php echo $row['id']; ?>' role='dialog' aria-labelledby='editModalLabel' aria-hidden='true'>
-                <div class='modal-dialog'>
-                    <!-- Modal content-->
-                    <div class='modal-content'>
-                        <div class='modal-header'>
-                            <h5 class='modal-title' id='editModalLabel'>Edit Obat</h5>
-                            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                                <span aria-hidden='true'>&times;</span>
-                            </button>
-                        </div>
-                        <div class='modal-body'>
-                            <form id='editForm' method='POST' action='src/components/admin/obat/UpdateObat.php'>
-                                <div class='form-group'>
-                                    <label for='nama_obat'>Nama Obat</label>
-                                    <input type='text' class='form-control' id='nama_obat' name='nama_obat' value='<?= $row['nama_obat']; ?>' required>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='kemasan'>Kemasan</label>
-                                    <input type='text' class='form-control' id='kemasan' name='kemasan' value='<?= $row['kemasan']; ?>' required>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='harga'>Harga</label>
-                                    <input type='text' class='form-control' id='harga' name='harga' value='<?= $row['harga']; ?>' required>
-                                </div>
-                                <!-- tambahkan input hidden untuk menyimpan nilai id -->
-                                <input type='hidden' name='id' value='<?php echo $row['id']; ?>'>
-                                <button type='submit' class='btn btn-primary' name='update'>Update</button>
-                            </form>
+                ?>
+                <tr>
+                    <td><?php echo $no++; ?></td>
+                    <td><?php echo $row['nama_obat']; ?></td>
+                    <td><?php echo $row['kemasan'] ?></td>
+                    <td><?php echo $row['harga']?></td>
+                    <td class='d-flex align-items-center justify-content-center'>
+                        <button type='button' class='btn btn-sm btn-warning edit-btn mx-1' data-toggle='modal' data-target='#myModal<?php echo $row['id']; ?>'>Edit</button>
+                        <a href='src/components/admin/obat/HapusObat.php?id=<?php echo $row['id']; ?>' class='btn btn-sm btn-danger mx-1' onclick='return confirm("Anda yakin ingin hapus?");'>Hapus</a>
+                    </td>
+                </tr>
+                <!-- Modal Edit Obat  -->
+                <div class='modal fade' id='myModal<?php echo $row['id']; ?>' tabindex="-1" role='dialog' aria-labelledby='editModalLabel' aria-hidden='true'>
+                    <div class='modal-dialog'>
+                        <!-- Modal content-->
+                        <div class='modal-content'>
+                            <div class='modal-header'>
+                                <h5 class='modal-title' id='editModalLabel'>Edit Obat</h5>
+                                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                    <span aria-hidden='true'>&times;</span>
+                                </button>
+                            </div>
+                            <div class='modal-body'>
+                                <!-- Form edit data obat disini -->
+                                <form action='src/components/admin/obat/UpdateObat.php' method='post'>
+                    <div class='form-group'>
+                        <label for='nama_obat'>Nama Obat</label>
+                        <input type='text' class='form-control' id='nama_obat' name='nama_obat' value='<?php echo $row["nama_obat"]; ?>' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='kemasan'>Kemasan</label>
+                        <input type='text' class='form-control' id='kemasan' name='kemasan' value='<?php echo $row["kemasan"]; ?>' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='harga'>Harga</label>
+                        <input type='text' class='form-control' id='harga' name='harga' value='<?php echo $row["harga"]; ?>' required>
+                    </div>
+                    <input type='hidden' name='id' value='<?php echo $row["id"]; ?>'>
+                    <button type='submit' class='btn btn-primary' name='update'>Update</button>
+                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- end Modal Edit Obat -->
-            <?php }
+                <!-- end Modal Edit Obat -->
+                <?php
+            }
             mysqli_close($mysqli);
             ?>
+
         </tbody>
     </table>
 </div>

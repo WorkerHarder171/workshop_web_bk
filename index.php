@@ -19,14 +19,13 @@
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <!-- Navbar -->
-        <?= include("src/components/navigation/navbar/Navbar.php") ?>
         <!-- SideBar -->
         <?= include("src/components/navigation/side-bar/SideBar.php") ?>
         <!-- content -->
         <div class="content-wrapper">
             <div class="content-header">
-            <div id="content"></div>
-        </div>
+                <div id="content"></div>
+            </div>
         </div>
         <!-- Footer -->
         <?= include("src/components/navigation/footer/Footer.php") ?>
@@ -35,7 +34,7 @@
     <!-- Script All -->
 
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="modules/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="modules/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
