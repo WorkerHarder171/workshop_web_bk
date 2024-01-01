@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Jan 2024 pada 10.03
+-- Waktu pembuatan: 01 Jan 2024 pada 14.21
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -61,6 +61,13 @@ CREATE TABLE `dokter` (
   `id_poli` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data untuk tabel `dokter`
+--
+
+INSERT INTO `dokter` (`id`, `nama`, `alamat`, `no_hp`, `id_poli`) VALUES
+(10, 'dr Musa', 'Ambarawa', '085697463214', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -88,6 +95,15 @@ CREATE TABLE `obat` (
   `harga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data untuk tabel `obat`
+--
+
+INSERT INTO `obat` (`id`, `nama_obat`, `kemasan`, `harga`) VALUES
+(1, 'OBH', '250ml', 60000),
+(2, 'Amoxilin', '100gr', 25000),
+(3, 'Amoxilin', '100gr', 25000);
+
 -- --------------------------------------------------------
 
 --
@@ -96,12 +112,19 @@ CREATE TABLE `obat` (
 
 CREATE TABLE `pasien` (
   `id` int(11) UNSIGNED NOT NULL,
-  `nama` varchar(255) NOT NULL,
-  `alamat` varchar(255) NOT NULL,
+  `nama_pasien` varchar(255) NOT NULL,
+  `alamat_pasien` varchar(255) NOT NULL,
   `no_ktp` varchar(255) NOT NULL,
   `no_hp` varchar(50) NOT NULL,
   `no_rm` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `pasien`
+--
+
+INSERT INTO `pasien` (`id`, `nama_pasien`, `alamat_pasien`, `no_ktp`, `no_hp`, `no_rm`) VALUES
+(1, 'Enrico', 'Yudisthira', '3323000012340001', '081234567890', 'RM-1');
 
 -- --------------------------------------------------------
 
@@ -128,6 +151,14 @@ CREATE TABLE `poli` (
   `nama_poli` varchar(255) NOT NULL,
   `keterangan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `poli`
+--
+
+INSERT INTO `poli` (`id`, `nama_poli`, `keterangan`) VALUES
+(1, 'Poliklinik Semarang', 'Ini merupakan pusat'),
+(2, 'Poliklinik Ambarawa', 'Ini merupakan cabang di ambarawa');
 
 --
 -- Indexes for dumped tables
@@ -208,7 +239,7 @@ ALTER TABLE `detail_periksa`
 -- AUTO_INCREMENT untuk tabel `dokter`
 --
 ALTER TABLE `dokter`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `jadwal_periksa`
@@ -220,13 +251,13 @@ ALTER TABLE `jadwal_periksa`
 -- AUTO_INCREMENT untuk tabel `obat`
 --
 ALTER TABLE `obat`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `pasien`
 --
 ALTER TABLE `pasien`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `periksa`
@@ -238,7 +269,7 @@ ALTER TABLE `periksa`
 -- AUTO_INCREMENT untuk tabel `poli`
 --
 ALTER TABLE `poli`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
