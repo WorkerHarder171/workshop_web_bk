@@ -1,34 +1,39 @@
 <?php
 include '../../../config/koneksi.php';
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $id = $_GET["id"];
-
-    $nama = $_POST["nama"];
-    $alamat = $_POST["alamat"];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $id = $_POST["id"];
+    $nama_pasien = $_POST["nama_pasien"];
+    $alamat_pasien = $_POST["alamat_pasien"];
     $no_ktp = $_POST["no_ktp"];
     $no_hp = $_POST["no_hp"];
     $no_rm = $_POST["no_rm"];
 
-    $query = "UPDATE dokter SET
-        nama = '$nama',
-        alamat = '$alamat',
-        no_ktp = '$no_ktp',
-        no_hp = '$no_hp',
-        no_rm = '$no_rm'.
-        WHERE id = '$id'";
+    $query = "UPDATE pasien SET
+        nama_pasien = ?,
+        alamat_pasien = ?,
+        no_ktp = ?,
+        no_hp = ?,
+        no_rm = ?
+        WHERE id = ?";
 
-if (mysqli_query($mysqli, $query)) {
-    ?>
-            <script>
-                alert("Data dokter berhasil diubah!")
-                window.location.href = "../../../../index.php"
-            </script>
-            <?php
-            exit();
-        } else {
-            echo "Error: " . $query . "<br>" . mysqli_error($mysqli);
-        }
+    $stmt = mysqli_prepare($mysqli, $query);
+    mysqli_stmt_bind_param($stmt, 'sssssi', $nama_pasien, $alamat_pasien, $no_ktp, $no_hp, $no_rm, $id);
+
+    if (mysqli_stmt_execute($stmt)) {
+        ?>
+        <script>
+            alert("Data pasien berhasil diubah!");
+            window.location.href = "../../../../index.php";
+        </script>
+        <?php
+        exit();
+    } else {
+        echo "Error: " . $query . "<br>" . mysqli_error($mysqli);
     }
-    mysqli_close($mysqli);
-    ?>
+
+    mysqli_stmt_close($stmt);
+}
+
+mysqli_close($mysqli);
+?>

@@ -1,32 +1,35 @@
 <?php
 include '../../../config/koneksi.php';
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $id = $_GET["id"];
-
-    $nama = $_POST["nama"];
-    $alamat = $_POST["alamat"];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $id = $_POST["id"];
+    $nama_dokter = $_POST["nama_dokter"];
+    $alamat_dokter = $_POST["alamat_dokter"];
     $no_hp = $_POST["no_hp"];
-    $id_poli = $_POST["id_poli"];
+    $poliklinik = $_POST["poliklinik"];
 
-    $query = "UPDATE pasien SET
-        nama = '$nama',
-        alamat = '$alamat',
-        no_hp = '$no_hp',
-        id_poli = '$id_poli'.
-        WHERE id = '$id'";
+    $query = "UPDATE dokter SET
+        nama_dokter = ?,
+        alamat_dokter = ?,
+        no_hp = ?,
+        id_poli = ?
+        WHERE id = ?";
 
-if (mysqli_query($mysqli, $query)) {
-    ?>
-            <script>
-                alert("Data dokter berhasil diubah!")
-                window.location.href = "../../../../index.php"
-            </script>
-            <?php
-            exit();
-        } else {
-            echo "Error: " . $query . "<br>" . mysqli_error($mysqli);
-        }
+    $stmt = mysqli_prepare($mysqli, $query);
+    mysqli_stmt_bind_param($stmt, "ssssi", $nama_dokter, $alamat_dokter, $no_hp, $poliklinik, $id);
+
+    if (mysqli_stmt_execute($stmt)) {
+?>
+        <script>
+            alert("Data dokter berhasil diubah!");
+            window.location.href = "../../../../index.php";
+        </script>
+<?php
+        exit();
+    } else {
+        echo "Error: " . $query . "<br>" . mysqli_error($mysqli);
     }
-    mysqli_close($mysqli);
-    ?>
+    mysqli_stmt_close($stmt);
+}
+mysqli_close($mysqli);
+?>

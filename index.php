@@ -18,7 +18,6 @@
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-        <!-- Navbar -->
         <!-- SideBar -->
         <?= include("src/components/navigation/side-bar/SideBar.php") ?>
         <!-- content -->
@@ -41,31 +40,31 @@
     <script src="modules/dist/js/adminlte.min.js"></script>
 
     <script>
-$(document).ready(function () {
-$('#content').load('src/components/main-content/MainContent.php')
-$('.menu').click(function (e){
-e.preventDefault();
-var menu =$(this).attr('id');
+        $(document).ready(function() {
+            $('#content').load('src/components/main-content/MainContent.php')
+            $('.menu').click(function(e) {
+                e.preventDefault();
+                var menu = $(this).attr('id');
 
-if(menu == "menuDashboard"){
-$('.nav-link').removeClass('active')
-$(this).addClass('active')
-$('#content').load('src/components/main-content/MainContent.php');
-}else if(menu == "menuDokter"){
-    $('.nav-link').removeClass('active')
-$(this).addClass('active')
-$('#content').load('src/components/admin/dokter/dokter.php');
-}else if(menu == "menuObat"){
-    $('.nav-link').removeClass('active')
-$(this).addClass('active')
-$('#content').load('src/components/admin/obat/Obat.php');
-}else if(menu == "menuPasien"){
-    $('.nav-link').removeClass('active')
-$(this).addClass('active')
-$('#content').load('src/components/admin/pasien/pasien.php');
-}
-})
-})
+                if (menu == "menuDashboard") {
+                    $('.nav-link').removeClass('active')
+                    $(this).addClass('active')
+                    $('#content').load('src/components/main-content/MainContent.php');
+                } else if (menu == "menuDokter") {
+                    $('.nav-link').removeClass('active')
+                    $(this).addClass('active')
+                    $('#content').load('src/components/admin/dokter/dokter.php');
+                } else if (menu == "menuObat") {
+                    $('.nav-link').removeClass('active')
+                    $(this).addClass('active')
+                    $('#content').load('src/components/admin/obat/Obat.php');
+                } else if (menu == "menuPasien") {
+                    $('.nav-link').removeClass('active')
+                    $(this).addClass('active')
+                    $('#content').load('src/components/admin/pasien/pasien.php');
+                }
+            })
+        })
     </script>
 
 </body>

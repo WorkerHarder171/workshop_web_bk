@@ -18,8 +18,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="alamat">Alamat</label>
-                        <input type="text" class="form-control" id="alamat" name="alamat" required>
+                        <label for="alamat_pasien">Alamat</label>
+                        <input type="text" class="form-control" id="alamat_pasien" name="alamat_pasien" required>
                     </div>
 
                     <div class="form-group">
@@ -36,7 +36,6 @@
                         <label for="no_rm">No Rekam Medis</label>
                         <input type="text" class="form-control" id="no_rm" name="no_rm" required>
                     </div>
-
                     <button type="submit" class="btn btn-primary">Tambah</button>
                 </form>
 
@@ -114,9 +113,7 @@
                 <td class='d-flex align-items-center justify-content-center'>
                     <button type='button' class='btn btn-sm btn-warning edit-btn mx-1' data-toggle='modal' data-target='#myModal<?php echo $row['id']; ?>'>Edit</button>
                     <a href='src/components/admin/obat/HapusObat.php?id=<?php echo $row['id']; ?>' class='btn btn-sm btn-danger mx-1' onclick='return confirm("Anda yakin ingin hapus?");'>Hapus</a>
-                </td>
-            </tr>
-            <!-- Modal Edit Obat  -->
+                  <!-- Modal Edit Obat  -->
             <div class='modal fade' id='myModal<?php echo $row['id']; ?>' role='dialog' aria-labelledby='editModalLabel' aria-hidden='true'>
                 <div class='modal-dialog'>
                     <!-- Modal content-->
@@ -128,33 +125,33 @@
                             </button>
                         </div>
                         <div class='modal-body'>
-                        <form action="src/components/admin/pasien/EditPasien.php" method="post">
+                        <form action="src/components/admin/pasien/UpdatePasien.php" method="POST">
+                            <input type="hidden" name="id" value="<?= $row['id']; ?>">
                             <div class="form-group">
                                 <label for="nama_pasien">Nama Pasien</label>
-                                <input type="text" class="form-control" id="nama_pasien" name="nama_pasien" required>
+                                <input type="text" class="form-control" id="nama_pasien" name="nama_pasien" value="<?php echo $row['nama_pasien'] ?>" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="alamat">Alamat</label>
-                                <input type="text" class="form-control" id="alamat" name="alamat" required>
+                                <label for="alamat_pasien">Alamat</label>
+                                <input type="text" class="form-control" id="alamat_pasien" name="alamat_pasien" value="<?php echo $row['alamat_pasien'] ?>"  required>
                             </div>
 
                             <div class="form-group">
                                 <label for="no_ktp">No KTP</label>
-                                <input type="text" class="form-control" id="no_ktp" name="no_ktp" required>
+                                <input type="text" class="form-control" id="no_ktp" name="no_ktp" value="<?php echo  $row['no_ktp'] ?>" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="no_hp">No Hp</label>
-                                <input type="text" class="form-control" id="no_hp" name="no_hp" required>
+                                <input type="text" class="form-control" id="no_hp" name="no_hp" value="<?php echo $row['no_hp'] ?>" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="no_rm">No Rekam Medis</label>
-                                <input type="text" class="form-control" id="no_rm" name="no_rm" required>
+                                <input type="text" class="form-control" id="no_rm" name="no_rm" value="<?php echo $row['no_rm'] ?>" required>
                             </div>
-
-                            <button type="submit" class="btn btn-primary">Tambah</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </form>
 
                         </div>
@@ -162,6 +159,8 @@
                 </div>
             </div>
             <!-- end Modal Edit Pasien -->
+                </td>
+            </tr>
             <?php }
             mysqli_close($mysqli);
             ?>
