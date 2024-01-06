@@ -7,7 +7,7 @@
             <form action="daftarPeriksa/tambahPeriksa.php" method="POST" class="py-2 px-3">
                 <div class="form-group my-2">
                     <label for="no_rm">Nomor Rekam Medis</label>
-                    <input class="w-100 px-4 rounded-lg border page-link" type="text" name="no_rm" id="no_rm" value="<?php ?>" required>
+                    <input class="w-100 px-4 rounded-lg border page-link" type="text" name="no_rm" id="no_rm" placeholder="202401-001" disabled required>
                 </div>
                 <div class="form-group my-2">
                     <label for="no_rm">Pilih Poliklinik</label>
@@ -60,7 +60,7 @@
             <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
                     <thead>
-                        <tr>
+                        <tr class="text-center">
                             <th>No</th>
                             <th>Poliklinik</th>
                             <th>Dokter</th>
@@ -73,16 +73,18 @@
                     </thead>
                     <tbody>
                         <?php
-                        $queryPendaftaran = "SELECT DAFTAR_POLI.id_pasien, POLI.nama_poli, DOKTER.nama, JADWAL_PERIKSA.hari, JADWAL_PERIKSA.jam_mulai, JADWAL_PERIKSA.jam_selesai, DAFTAR_POLI.no_antrian
+                        $queryPendaftaran = "SELECT DAFTAR_POLI.id_pasien, POLI.nama_poli, DOKTER.nama_dokter, JADWAL_PERIKSA.hari, JADWAL_PERIKSA.jam_mulai, JADWAL_PERIKSA.jam_selesai, DAFTAR_POLI.no_antrian
                         FROM daftar_poli AS DAFTAR_POLI
-                        JOIN pasien AS PASIEN on id_pasien
-                        JOIN jadwal_periksa AS JADWAL_PERIKSA on id_jadwal
-                        JOIN dokter AS DOKTER on JADWAL_PERIKSA.id_dokter  = DOKTER.id
-                        JOIN poli AS POLI on DOKTER.id_poli = POLI.id WHERE DAFTAR_POLI.id_pasien";
+                        JOIN pasien AS PASIEN ON DAFTAR_POLI.id_pasien = PASIEN.id
+                        JOIN jadwal_periksa AS JADWAL_PERIKSA ON DAFTAR_POLI.id_jadwal = JADWAL_PERIKSA.id
+                        JOIN dokter AS DOKTER ON JADWAL_PERIKSA.id_dokter = DOKTER.id
+                        JOIN poli AS POLI ON DOKTER.id_poli = POLI.id
+                        WHERE DAFTAR_POLI.id_pasien = 5";
+                        $no = 1;
                         $resultPendaftaran = mysqli_query($mysqli, $queryPendaftaran);
                         while ($rowPeriksa = mysqli_fetch_assoc($resultPendaftaran)) {
                         ?>
-                            <tr>
+                            <tr class="text-center">
                                 <td><?php echo $no++; ?></td>
                                 <td><?php echo $rowPeriksa['nama_poli']; ?></td>
                                 <td><?php echo $rowPeriksa['nama_dokter'] ?></td>
@@ -92,8 +94,7 @@
                                 <td><?php echo $rowPeriksa['no_antrian'] ?></td>
 
                                 <td class='d-flex align-items-center justify-content-center'>
-                                    <button type='button' class='btn btn-sm btn-warning edit-btn mx-1' data-toggle='modal' data-target='#myModal<?php echo $row['id']; ?>'>Edit</button>
-                                    <a href='src/pages/admin/obat/HapusObat.php?id=<?php echo $row['id']; ?>' class='btn btn-sm btn-danger mx-1' onclick='return confirm("Anda yakin ingin hapus?");'>Hapus</a>
+                                    <button type='button' class='btn btn-sm btn-primary edit-btn mx-1' data-toggle='modal' data-target='#myModal<?php echo $row['id']; ?>'>Details</button>
                                     <!-- Modal Edit Obat  -->
                                     <div class='modal fade' id='myModal<?php echo $row['id']; ?>' role='dialog' aria-labelledby='editModalLabel' aria-hidden='true'>
                                         <div class='modal-dialog'>
