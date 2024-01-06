@@ -55,7 +55,7 @@
 
     <script>
         $(document).ready(function() {
-            $('#content').load('./daftar-periksa/index.php')
+            $('#content').load('./riwayat-periksa/index.php')
             $('.menu').click(function(e) {
                 e.preventDefault();
                 var menu = $(this).attr('id');

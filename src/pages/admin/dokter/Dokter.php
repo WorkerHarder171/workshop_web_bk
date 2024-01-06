@@ -10,14 +10,14 @@
             </div>
             <div class="modal-body">
                 <!-- Form tambah data obat disini -->
-                <form action="src/components/admin/dokter/TambahDokter.php" method="post">
+                <form action="src/pages/admin/dokter/TambahDokter.php" method="post">
                     <div class='form-group'>
-                        <label for='nama'>Nama Dokter</label>
-                        <input type='text' class='form-control' id='nama' name='nama' required>
+                        <label for='nama_dokter'>Nama Dokter</label>
+                        <input type='text' class='form-control' id='nama_dokter' name='nama_dokter' required>
                     </div>
                     <div class='form-group'>
-                        <label for='alamat'>Alamat</label>
-                        <input type='text' class='form-control' id='alamat' name='alamat' required>
+                        <label for='alamat_dokter'>Alamat</label>
+                        <input type='text' class='form-control' id='alamat_dokter' name='alamat_dokter' required>
                     </div>
                     <div class='form-group'>
                         <label for='no_hp'>No Hp</label>
@@ -110,7 +110,7 @@
 
                                         <td class='d-flex align-items-center justify-content-center'>
                                             <button type='button' class='btn btn-sm btn-warning edit-btn mx-1' data-toggle='modal' data-target='#myModal<?php echo $row['id']; ?>'>Edit</button>
-                                            <a href='src/components/admin/obat/HapusObat.php?id=<?php echo $row['id']; ?>' class='btn btn-sm btn-danger mx-1' onclick='return confirm("Anda yakin ingin hapus?");'>Hapus</a>
+                                            <a href='src/pages/admin/obat/HapusObat.php?id=<?php echo $row['id']; ?>' class='btn btn-sm btn-danger mx-1' onclick='return confirm("Anda yakin ingin hapus?");'>Hapus</a>
                                             <!-- Modal Edit Obat  -->
                                             <div class='modal fade' id='myModal<?php echo $row['id']; ?>' role='dialog' aria-labelledby='editModalLabel' aria-hidden='true'>
                                                 <div class='modal-dialog'>
@@ -123,15 +123,15 @@
                                                             </button>
                                                         </div>
                                                         <div class='modal-body'>
-                                                            <form method='POST' action='src/components/admin/dokter/UpdateDokter.php'>
+                                                            <form method='POST' action='src/pages/admin/dokter/UpdateDokter.php'>
                                                                 <input type="hidden" name="id" value="<?= $row['id']; ?>">
                                                                 <div class='form-group'>
-                                                                    <label for='nama'>Nama Dokter</label>
-                                                                    <input type='text' class='form-control' id='nama' name='nama' value='<?= $row['nama_dokter']; ?>' required>
+                                                                    <label for='nama_dokter'>Nama Dokter</label>
+                                                                    <input type='text' class='form-control' id='nama_dokter' name='nama_dokter' value='<?= $row['nama_dokter']; ?>' required>
                                                                 </div>
                                                                 <div class='form-group'>
-                                                                    <label for='alamat'>Alamat</label>
-                                                                    <input type='text' class='form-control' id='alamat' name='alamat' value='<?= $row['alamat_dokter']; ?>' required>
+                                                                    <label for='alamat_dokter'>Alamat</label>
+                                                                    <input type='text' class='form-control' id='alamat_dokter' name='alamat_dokter' value='<?= $row['alamat_dokter']; ?>' required>
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     <label for='no_hp'>No Hp</label>

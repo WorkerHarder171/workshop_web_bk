@@ -49,19 +49,19 @@
                 if (menu == "menuDashboard") {
                     $('.nav-link').removeClass('active')
                     $(this).addClass('active')
-                    $('#content').load('src/components/main-content/MainContent.php');
+                    $('#content').load('src/pages/main-content/MainContent.php');
                 } else if (menu == "menuDokter") {
                     $('.nav-link').removeClass('active')
                     $(this).addClass('active')
-                    $('#content').load('src/components/admin/dokter/dokter.php');
+                    $('#content').load('src/pages/admin/dokter/dokter.php');
                 } else if (menu == "menuObat") {
                     $('.nav-link').removeClass('active')
                     $(this).addClass('active')
-                    $('#content').load('src/components/admin/obat/Obat.php');
+                    $('#content').load('src/pages/admin/obat/Obat.php');
                 } else if (menu == "menuPasien") {
                     $('.nav-link').removeClass('active')
                     $(this).addClass('active')
-                    $('#content').load('src/components/admin/pasien/pasien.php');
+                    $('#content').load('src/pages/admin/pasien/pasien.php');
                 }
             })
         })

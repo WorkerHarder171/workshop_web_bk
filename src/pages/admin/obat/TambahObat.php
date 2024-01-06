@@ -12,8 +12,8 @@ if ($mysqli) {
         if (mysqli_query($mysqli, $query)) {
 ?>
             <script>
-           alert("Data obat berhasil ditambahkan!")
-           window.location.href = "../../../../index.php"
+                alert("Data obat berhasil ditambahkan!")
+                window.location.href = "../../../../index.php"
             </script>
 <?php
             exit();
