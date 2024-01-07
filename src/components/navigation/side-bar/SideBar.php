@@ -1,3 +1,39 @@
+<?php
+session_start();
+
+// Assuming you have a role stored in the session after login
+$role = $_SESSION['akses'];
+
+// Sidebar Menu Items for Admin
+$menuAdmin = [
+    ['link' => 'src/components/main-content/MainContent.php', 'icon' => 'fas fa-th', 'text' => 'Dashboard'],
+    ['link' => 'src/components/admin/dokter/dokter.php', 'icon' => 'fas fa-solid fa-user-nurse', 'text' => 'Dokter'],
+    ['link' => 'src/components/admin/obat/Obat.php', 'icon' => 'fas fa-solid fa-pills', 'text' => 'Obat'],
+    ['link' => 'src/components/admin/pasien/pasien.php', 'icon' => 'fas fa-solid fa-user', 'text' => 'Pasien'],
+];
+
+// Sidebar Menu Items for Dokter
+$menuDokter = [
+    ['link' => 'src/components/main-content/MainContent.php', 'icon' => 'fas fa-th', 'text' => 'Dashboard'],
+    ['link' => '#', 'icon' => 'fas fa-solid fa-user-nurse', 'text' => 'Periksa'],
+    ['link' => 'src/components/admin/obat/Obat.php', 'icon' => 'fas fa-solid fa-pills', 'text' => 'Riwayat'],
+];
+
+// Sidebar Menu Items for Pasien
+$menuPasien = [
+    ['link' => 'src/components/main-content/MainContent.php', 'icon' => 'fas fa-th', 'text' => 'Dashboard'],
+];
+
+// Display the appropriate menu based on the role
+if ($role === 'admin') {
+    $menu = $menuAdmin;
+} elseif ($role === 'dokter') {
+    $menu = $menuDokter;
+} elseif ($role === 'pasien') {
+    $menu = $menuPasien;
+}
+?>
+
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -14,7 +50,7 @@
                 <img src="../../../modules/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Dady Bima </a>
+                <a href="#" class="d-block"><?php echo $_SESSION['username']; ?></a>
             </div>
         </div>
         <!-- Sidebar Menu -->
@@ -29,31 +65,14 @@
                     </a>
                     <!-- Sub Nav -->
                     <ul class="nav nav-treeview">
-
-                        <li class="nav-item">
-                            <a href="src/components/main-content/MainContent.php" id="menuDashboard" class="nav-link active menu d-flex align-items-center" style="gap: 5px;">
-                                <i class="nav-icon fas fa-th "></i>
-                                <p>Dashboard</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="src/components/admin/dokter/dokter.php" id="menuDokter" class="nav-link menu d-flex align-items-center" style="gap: 5px;">
-                                <i class="fas fa-solid fa-user-nurse nav-icon"></i>
-                                <p>Dokter</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="src/components/admin/obat/Obat.php" id="menuObat" class="nav-link menu d-flex align-items-center" style="gap: 5px;">
-                                <i class="fas fa-solid fa-pills nav-icon"></i>
-                                <p>Obat</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="src/components/admin/pasien/pasien.php" id="menuPasien" class="nav-link menu d-flex align-items-center" style="gap: 5px;">
-                                <i class="fas fa-solid fa-user nav-icon"></i>
-                                <p>Pasien</p>
-                            </a>
-                        </li>
+                        <?php foreach ($menu as $item) : ?>
+                            <li class="nav-item">
+                                <a href="<?php echo $item['link']; ?>" class="nav-link menu d-flex align-items-center" style="gap: 5px;">
+                                    <i class="<?php echo $item['icon']; ?> nav-icon"></i>
+                                    <p><?php echo $item['text']; ?></p>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
                     </ul>
                     <!-- End Sub Nav -->
                 </li>

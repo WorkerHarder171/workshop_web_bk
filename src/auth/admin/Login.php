@@ -3,12 +3,12 @@ session_start();
 include_once("../../config/koneksi.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $no_ktp = $_POST["no_ktp"];
+    $username = $_POST["username"];
     $password = $_POST["password"];
 
-    $sql = "SELECT * FROM pasien WHERE no_ktp = ?";
+    $sql = "SELECT * FROM admins WHERE username = ?";
     $result = mysqli_prepare($mysqli, $sql);
-    mysqli_stmt_bind_param($result, "s", $no_ktp);
+    mysqli_stmt_bind_param($result, "s", $username);
     mysqli_stmt_execute($result);
     $CheckResult = mysqli_stmt_get_result($result);
     if ($CheckResult->num_rows <= 0) {
@@ -21,17 +21,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die();
     } else {
         $row = mysqli_fetch_assoc($CheckResult);
-        if ($row['no_ktp'] == $no_ktp && $row['password'] == $password) {
+        if ($row['username'] == $username && $row['password'] == $password) {
             $_SESSION["login"] = true;
             $_SESSION["id"] = $row["id"];
-            $_SESSION["username"] = $row["nama_pasien"];
-            $_SESSION["no_rm"] = $row["no_rm"];
-            $_SESSION["akses"] = "pasien";
+            $_SESSION["username"] = $row["username"];
+            $_SESSION["akses"] = "admin";
         ?>
             <script>
                 alert(`Login Berhasil`)
             </script>
-            <meta http-equiv='refresh' content='0; url=../../../src/pages/pasien/index.php'>
+            <meta http-equiv='refresh' content='0; url=../../../src/pages/admin/index.php'>
 <?php
             die();
         }
@@ -60,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <form method="POST" action="">
                 <div class="form-group my-4 gap-3">
-                    <input type="number" class="w-100 px-4 py-3 my-3 rounded-lg border page-link" id="no_ktp" name="no_ktp" placeholder="NIK" autocomplete="off">
+                    <input type="text" class="w-100 px-4 py-3 my-3 rounded-lg border page-link" id="username" name="username" placeholder="username" autocomplete="off">
                     <input type="password" class="w-100 px-4 py-3 my-3 rounded-lg border page-link" id="password" name="password" placeholder="Password">
                     <!-- <a href="#" class="fst-normal">Lupa Password?</a> -->
                 </div>
