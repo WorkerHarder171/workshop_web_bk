@@ -110,7 +110,7 @@
 
                                         <td class='d-flex align-items-center justify-content-center'>
                                             <button type='button' class='btn btn-sm btn-warning edit-btn mx-1' data-toggle='modal' data-target='#myModal<?php echo $row['id']; ?>'>Edit</button>
-                                            <a href='src/pages/admin/obat/HapusObat.php?id=<?php echo $row['id']; ?>' class='btn btn-sm btn-danger mx-1' onclick='return confirm("Anda yakin ingin hapus?");'>Hapus</a>
+                                            <a href='src/pages/admin/obat/HapusObat.php?id=<?php echo $row['dokter.id']; ?>' class='btn btn-sm btn-danger mx-1' onclick='return confirm("Anda yakin ingin hapus?");'>Hapus</a>
                                             <!-- Modal Edit Obat  -->
                                             <div class='modal fade' id='myModal<?php echo $row['id']; ?>' role='dialog' aria-labelledby='editModalLabel' aria-hidden='true'>
                                                 <div class='modal-dialog'>

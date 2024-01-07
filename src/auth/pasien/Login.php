@@ -1,37 +1,41 @@
 <?php
 session_start();
-include("../../config/koneksi.php");
+include_once("../../config/koneksi.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-
     $no_ktp = $_POST["no_ktp"];
     $password = $_POST["password"];
 
-    $queryCheckExist = "SELECT * FROM pasien WHERE no_ktp = ?";
-    $stmt = mysqli_prepare($mysqli, $queryCheckExist);
-    mysqli_stmt_bind_param($stmt, "s", $no_ktp);
-    mysqli_stmt_execute($stmt);
-    $resultCheckExist = mysqli_stmt_get_result($stmt);
-
-    if (mysqli_num_rows($resultCheckExist) <= 0) {
-        ?>
-        <script>alert(`Pasien belum terdaftar, silakan register!`)</script>
-        <meta http-equiv='refresh' content='0; url=register.php'>
+    $sql = "SELECT * FROM pasien WHERE no_ktp = ?";
+    $result = mysqli_prepare($mysqli, $sql);
+    mysqli_stmt_bind_param($result, "s", $no_ktp);
+    mysqli_stmt_execute($result);
+    $CheckResult = mysqli_stmt_get_result($result);
+    if ($CheckResult->num_rows <= 0) {
+?>
+        <script>
+            alert(`Maaf NIK atau password anda salah`)
+        </script>
+        <meta http-equiv='refresh' content='0;'>
         <?php
         die();
     } else {
-        $row = mysqli_fetch_assoc($resultCheckExist);
-
+        $row = mysqli_fetch_assoc($CheckResult);
         if ($row['no_ktp'] == $no_ktp && $row['password'] == $password) {
-?>
+            $_SESSION["login"] = true;
+            $_SESSION["id"] = $row["id"];
+            $_SESSION["username"] = $row["nama_pasien"];
+            $_SESSION["no_rm"] = $row["no_rm"];
+            $_SESSION["akses"] = "pasien";
+        ?>
             <script>
                 alert(`Login Berhasil`)
             </script>
-            <meta http-equiv='refresh' content='0; url=login.php'>
+            <meta http-equiv='refresh' content='0; url=../../../src/pages/pasien/index.php'>
 <?php
             die();
         }
+        exit();
     }
 }
 

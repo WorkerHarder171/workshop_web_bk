@@ -22,25 +22,25 @@
         </div>
     </header>
     <div class="position-absolute z-2 w-100" style="height: 50vh; background-color:rgba(255,255,255,0.2); top:0;  background-size: cover; background-repeat: no-repeat;"></div>
-    <div class="position-relative z-1" style="height: 50vh; background-image: url('../assets/wallpaperbetter.com_1920x1080.jpg'); background-repeat: no-repeat;background-size: cover;"></div>
+    <div class="position-relative z-1" style="height: 50vh; background-image: url('src/assets/wallpaperbetter.com_1920x1080.jpg'); background-repeat: no-repeat;background-size: cover;"></div>
 
     <div class="d-flex justify-content-evenly w-100" style="background-color: rgba(236, 234, 235, 0.29);">
         <div class="p-3 rounded-sm">
             <div class="wrapper my-4 d-flex justify-content-center">
-                <img src="../assets/pasien.png" alt="pasien" class="border rounded-circle p-2" style="width:30%;">
+                <img src="src/assets/pasien.png" alt="pasien" class="border rounded-circle p-2" style="width:30%;">
             </div>
             <h4>Login Pasien</h4>
             <p>Apabila anda seorang pasien, silahkan login melalui link dibawah ini!</p>
-            <a href="./pasien/login.php" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">Klik Link Berikut <span><i class="fa-solid fa-arrow-right"></i></span></a>
+            <a href="src/auth/pasien/login.php" class="btn btn-primary">Login Pasien <span></span></a>
         </div>
 
         <div class="p-3 rounded-sm">
             <div class="wrapper my-4 d-flex justify-content-center">
-                <img src="../assets/dokter.png" alt="dokter" class="border rounded-circle p-2" style="width:30%;">
+                <img src="src/assets/dokter.png" alt="dokter" class="border rounded-circle p-2" style="width:30%;">
             </div>
             <h4>Login Dokter</h4>
             <p>Apabila anda seorang dokter, silahkan login melalui link dibawah ini!</p>
-            <a href="./dokter/login.php" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">Klik Link Berikut <span><i class="fa-solid fa-arrow-right"></i></span></a>
+            <a href="src/auth/dokter/login.php" class="btn btn-primary">Login Dokter <span></span></a>
         </div>
     </div>
 

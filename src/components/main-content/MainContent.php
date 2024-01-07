@@ -1,4 +1,3 @@
-
 <?php
 include '../../config/koneksi.php';
 
@@ -8,28 +7,28 @@ function queryTotal($mysqli, $tableName): string
     $result = mysqli_fetch_assoc($data);
     $totalData = $result['total_data'];
     return $totalData;
- }
+}
 ?>
 
 <div class="wrapper">
     <section class="content">
-    <!-- Container -->
-    <div class="container-fluid">
-    <div class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2 ">
-            <div class="col-sm-6">
-                <h1 class="m-0">Dashboard</h1>
+        <!-- Container -->
+        <div class="container-fluid">
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2 ">
+                        <div class="col-sm-6">
+                            <h1 class="m-0">Dashboard</h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="index.php?page=home">Home</a></li>
+                                <li class="breadcrumb-item active">Dashboard</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="index.php?page=home">Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard</li>
-                </ol>
-            </div>
-        </div>
-    </div>
-</div>
 
             <!-- Row -->
             <div class="row">
@@ -46,8 +45,8 @@ function queryTotal($mysqli, $tableName): string
                             </span>
                         </div>
                         <div class="footer">
-                        <span class="text-secondary">
-                            0% - 1 Hari
+                            <span class="text-secondary">
+                                0% - 1 Hari
                         </div>
                     </div>
                 </div>
@@ -63,8 +62,8 @@ function queryTotal($mysqli, $tableName): string
                             <span class="info-box-number font-weight-bold display-4"><?= queryTotal($mysqli, "dokter"); ?></span>
                         </div>
                         <div class="footer">
-                        <span class="text-secondary">
-                            0% - 1 Hari
+                            <span class="text-secondary">
+                                0% - 1 Hari
                         </div>
                     </div>
                 </div>
@@ -80,8 +79,8 @@ function queryTotal($mysqli, $tableName): string
                             <span class="info-box-number font-weight-bold display-4"><?= queryTotal($mysqli, "obat"); ?></span>
                         </div>
                         <div class="footer">
-                        <span class="text-secondary">
-                            0% - 1 Hari
+                            <span class="text-secondary">
+                                0% - 1 Hari
                         </div>
                     </div>
                 </div>
@@ -98,19 +97,19 @@ function queryTotal($mysqli, $tableName): string
                             <span class="info-box-number font-weight-bold display-4"><?= queryTotal($mysqli, "jadwal_periksa"); ?></span>
                         </div>
                         <div class="footer">
-                        <span class="text-secondary">
-                            0% - 1 Hari
+                            <span class="text-secondary">
+                                0% - 1 Hari
                         </div>
                     </div>
                 </div>
                 <!-- End Card -->
             </div>
-            </div>
+        </div>
 
-            <div class="content container-fluid">
-                <div class="row">
-                    <!-- Statistik -->
-                    <div class="col-lg-9 col-sm-6 col-md-3">
+        <div class="content container-fluid">
+            <div class="row">
+                <!-- Statistik -->
+                <!-- <div class="col-lg-9 col-sm-6 col-md-3">
                         <div class="card shadow border-0">
                             <div class="card-header border-0">
                                 <div class="d-flex justify-content-between">
@@ -147,44 +146,44 @@ function queryTotal($mysqli, $tableName): string
                                 </div>
                             </div>
                     </div>
+                </div> -->
+                <!-- End Card -->
+
+                <!-- Poliklinik Card -->
+                <div class="col-lg-3 col-sm-6 col-md-3">
+                    <div class="card py-2 px-3 shadow border-0">
+                        <div class=" d-flex justify-content-between align-items-center">
+                            <span class=" text-secondary">Poliklinik</span>
+                            <span class="info-box-icon bg-success elevation-1 p-2 rounded-lg"><i class="fas fa-solid fa-hospital" style="color: #ffffff"></i></span>
+                        </div>
+                        <div class="body">
+                            <span class="info-box-number font-weight-bold display-4"><?= queryTotal($mysqli, "poli"); ?></span>
+                        </div>
+                        <div class="footer">
+                            <span class="text-secondary">
+                                0% - 1 Hari
+                        </div>
+                    </div>
                 </div>
-                    <!-- End Card -->
+                <!-- End Card -->
 
-                    <!-- Poliklinik Card -->
-                    <div class="col-lg-3 col-sm-6 col-md-3">
-                        <div class="card py-2 px-3 shadow border-0">
-                            <div class=" d-flex justify-content-between align-items-center">
-                                <span class=" text-secondary">Poliklinik</span>
-                                <span class="info-box-icon bg-success elevation-1 p-2 rounded-lg"><i class="fas fa-solid fa-hospital" style="color: #ffffff"></i></span>
-                            </div>
-                            <div class="body">
-                                <span class="info-box-number font-weight-bold display-4"><?= queryTotal($mysqli, "poli"); ?></span>
-                            </div>
-                            <div class="footer">
+                <!-- Antrian Card -->
+                <div class="col-lg-3 col-sm-6 col-md-3">
+                    <div class="card py-2 px-3 shadow border-0 ">
+                        <div class=" d-flex justify-content-between align-items-center">
+                            <span class=" text-secondary">Antrian</span>
+                            <span class="info-box-icon bg-success elevation-1 p-2 rounded-lg"><i class="fa-regular fa-hourglass-half" style="color: #ffffff;"></i></span>
+                        </div>
+                        <div class="body">
+                            <span class="info-box-number font-weight-bold display-4"><?= queryTotal($mysqli, "poli"); ?></span>
+                        </div>
+                        <div class="footer">
                             <span class="text-secondary">
                                 0% - 1 Hari
-                            </div>
                         </div>
                     </div>
-                    <!-- End Card -->
-
-                    <!-- Antrian Card -->
-                    <div class="col-lg-12 col-sm-6 col-md-3">
-                        <div class="card py-2 px-3 shadow border-0 ">
-                            <div class=" d-flex justify-content-between align-items-center">
-                                <span class=" text-secondary">Antrian</span>
-                                <span class="info-box-icon bg-success elevation-1 p-2 rounded-lg"><i class="fa-regular fa-hourglass-half" style="color: #ffffff;"></i></span>
-                            </div>
-                            <div class="body">
-                                <span class="info-box-number font-weight-bold display-4"><?= queryTotal($mysqli, "poli"); ?></span>
-                            </div>
-                            <div class="footer">
-                            <span class="text-secondary">
-                                0% - 1 Hari
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Card -->
+                </div>
+                <!-- End Card -->
             </div>
     </section>
 </div>

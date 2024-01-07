@@ -9,7 +9,7 @@
     <title>Poliklinik</title>
 
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="../../../modulesplugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../../../modules/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../../../modules/dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
@@ -18,44 +18,35 @@
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
+        <!-- Navbar -->
+        <?php include("../../components/navigation/navbar/Navbar.php") ?>
         <!-- Sidebar -->
         <?php include("../../components/navigation/side-bar/SideBar.php") ?>
-        <!-- Content Wrapper. Contains page content -->
+
         <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
             <div class="content-header">
                 <div id="content"></div>
             </div>
-            <!-- /.content -->
         </div>
-
-        <!-- /.content-wrapper -->
 
         <!-- Main Footer -->
         <?php include("../../components/navigation/footer/Footer.php") ?>
     </div>
-    <!-- ./wrapper -->
 
-    <!-- REQUIRED SCRIPTS -->
 
-    <!-- jQuery -->
-    <script src="../../../modules/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="../../../modules/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../../../modules/dist/js/adminlte.min.js"></script>
-
     <!-- jQuery -->
+    <script src="../../../modules/plugins/jquery/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Bootstrap 4 -->
     <script src="../../../modules/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 
     <script>
         $(document).ready(function() {
-            $('#content').load('./daftar-periksa/index.php')
+            $('#content').load('./dashboard/index.php')
             $('.menu').click(function(e) {
                 e.preventDefault();
                 var menu = $(this).attr('id');
@@ -66,7 +57,7 @@
                 } else if (menu == "menuDaftar") {
                     $('.nav-link').removeClass('active')
                     $(this).addClass('active')
-                    $('#content').load('./daftarPeriksa/index.php');
+                    $('#content').load('./dasboard/index.php');
                 }
             })
         })

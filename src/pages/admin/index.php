@@ -22,45 +22,66 @@
         <?php include("../../components/navigation/navbar/Navbar.php") ?>
         <!-- Sidebar -->
         <?php include("../../components/navigation/side-bar/SideBar.php") ?>
-
+        <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
             <div class="content-header">
                 <div id="content"></div>
             </div>
+            <!-- /.content -->
         </div>
 
-        <!-- Footer -->
+        <!-- /.content-wrapper -->
+
+        <!-- Main Footer -->
         <?php include("../../components/navigation/footer/Footer.php") ?>
     </div>
+    <!-- ./wrapper -->
 
-    <!-- AdminLTE App -->
-    <script src="../../../modules/dist/js/adminlte.min.js"></script>
+    <!-- REQUIRED SCRIPTS -->
+
     <!-- jQuery -->
     <script src="../../../modules/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../../../modules/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../../../modules/dist/js/adminlte.min.js"></script>
+
+    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <!-- Bootstrap JS -->
-    <script src="../../../modules/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+    <!-- Bootstrap 4 -->
+    <script src="../../../modules/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <script>
         $(document).ready(function() {
-            $('#content').load('./periksa-pasien/index.php')
+            $('#content').load('../../components/main-content/MainContent.php')
             $('.menu').click(function(e) {
                 e.preventDefault();
                 var menu = $(this).attr('id');
-                if (menu == "menuHome") {
+
+                if (menu == "menuDashboard") {
                     $('.nav-link').removeClass('active')
                     $(this).addClass('active')
-                    $('#content').load('./home/index.php');
-                } else if (menu == "menuDaftar") {
+                    $('#content').load('../../pages/main-content/MainContent.php');
+                } else if (menu == "menuDokter") {
                     $('.nav-link').removeClass('active')
                     $(this).addClass('active')
-                    $('#content').load('./riwayat/index.php');
+                    $('#content').load('../../pages/admin/dokter/dokter.php');
+                } else if (menu == "menuObat") {
+                    $('.nav-link').removeClass('active')
+                    $(this).addClass('active')
+                    $('#content').load('../../pages/admin/obat/Obat.php');
+                } else if (menu == "menuPasien") {
+                    $('.nav-link').removeClass('active')
+                    $(this).addClass('active')
+                    $('#content').load('../../pages/admin/pasien/pasien.php');
                 }
             })
         })
     </script>
+
 </body>
 
 </html>
