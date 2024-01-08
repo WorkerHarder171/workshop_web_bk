@@ -21,21 +21,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     mysqli_stmt_bind_param($stmt, "iisi", $id_pasien, $id_jadwal, $keluhan, $no_antrian);
 
     if (mysqli_stmt_execute($stmt)) {
+        $id_daftar_poli = mysqli_insert_id($mysqli);
+        $queryPeriksa = "INSERT INTO periksa (id_daftar_poli) VALUES (?)";
+        $stmtPeriksa = mysqli_prepare($mysqli, $queryPeriksa);
+        mysqli_stmt_bind_param($stmtPeriksa, "i", $id_daftar_poli);
+        if (mysqli_stmt_execute($stmtPeriksa)) {
 ?>
-        <script>
-            alert(`Berhasil Daftar Poli`)
-        </script>
-        <meta http-equiv='refresh' content='0; url=../index.php'>
+            <script>
+                alert(`Berhasil Daftar Poli`)
+            </script>
+            <meta http-equiv='refresh' content='0; url=../index.php'>
 <?php
-        exit();
+            exit();
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
+        }
+        mysqli_stmt_close($stmtPeriksa);
     } else {
-        // Jika terjadi kesalahan, tampilkan pesan error
-        echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
+        echo "Error: " . $query . "<br>" . mysqli_error($mysqli);
     }
-
-    // Tutup statement
     mysqli_stmt_close($stmt);
 }
 
-// Tutup koneksi
 mysqli_close($mysqli);
+?>

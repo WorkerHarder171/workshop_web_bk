@@ -10,7 +10,7 @@
             </div>
             <div class="modal-body">
                 <!-- Form tambah data obat disini -->
-                <form action="src/pages/admin/dokter/TambahDokter.php" method="post">
+                <form action="../admin/dokter/TambahDokter.php" method="post">
                     <div class='form-group'>
                         <label for='nama_dokter'>Nama Dokter</label>
                         <input type='text' class='form-control' id='nama_dokter' name='nama_dokter' required>
@@ -110,7 +110,7 @@
 
                                         <td class='d-flex align-items-center justify-content-center'>
                                             <button type='button' class='btn btn-sm btn-warning edit-btn mx-1' data-toggle='modal' data-target='#myModal<?php echo $row['id']; ?>'>Edit</button>
-                                            <a href='src/pages/admin/obat/HapusObat.php?id=<?php echo $row['dokter.id']; ?>' class='btn btn-sm btn-danger mx-1' onclick='return confirm("Anda yakin ingin hapus?");'>Hapus</a>
+                                            <a href='../admin/dokter/HapusDokter.php?id=<?php echo $row['id']; ?>' class='btn btn-sm btn-danger mx-1' onclick='return confirm("Anda yakin ingin hapus?");'>Hapus</a>
                                             <!-- Modal Edit Obat  -->
                                             <div class='modal fade' id='myModal<?php echo $row['id']; ?>' role='dialog' aria-labelledby='editModalLabel' aria-hidden='true'>
                                                 <div class='modal-dialog'>
@@ -123,7 +123,7 @@
                                                             </button>
                                                         </div>
                                                         <div class='modal-body'>
-                                                            <form method='POST' action='src/pages/admin/dokter/UpdateDokter.php'>
+                                                            <form method='POST' action='../admin/dokter/UpdateDokter.php'>
                                                                 <input type="hidden" name="id" value="<?= $row['id']; ?>">
                                                                 <div class='form-group'>
                                                                     <label for='nama_dokter'>Nama Dokter</label>

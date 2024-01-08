@@ -63,7 +63,7 @@ $pasien =  $_SESSION['username'];
                                     <p>Pasien</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a href="src/components/admin/jadwal-periksa/JadwalPeriksa.php" id="menuJadwalPeriksa" class="nav-link menu d-flex align-items-center" style="gap: 5px;">
                                     <i class="fas fa-solid fa-clock nav-icon"></i>
                                     <p>Jadwal</p>
@@ -74,7 +74,7 @@ $pasien =  $_SESSION['username'];
                                     <i class="fas fa-solid fa-hospital nav-icon"></i>
                                     <p>Poli</p>
                                 </a>
-                            </li>
+                            </li> -->
                         </ul>
                         <!-- End Sub Nav -->
                     </li>
@@ -127,6 +127,12 @@ $pasien =  $_SESSION['username'];
                                 <a href="src/components/admin/dokter/dokter.php" id="menuJadwal" class="nav-link menu d-flex align-items-center" style="gap: 5px;">
                                     <i class="fas fa-solid fa-clock nav-icon"></i>
                                     <p>Jadwal</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="src/components/admin/dokter/dokter.php" id="menuRiwayat" class="nav-link menu d-flex align-items-center" style="gap: 5px;">
+                                    <i class="fas fa-solid fa-history nav-icon"></i>
+                                    <p>Riwayat</p>
                                 </a>
                             </li>
                         </ul>

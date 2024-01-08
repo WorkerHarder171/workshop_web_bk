@@ -67,14 +67,14 @@
                     $('.nav-link').removeClass('active')
                     $(this).addClass('active')
                     $('#content').load('../../pages/admin/pasien/pasien.php');
-                } else if (menu == "menuJadwalPeriksa") {
-                    $('.nav-link').removeClass('active')
-                    $(this).addClass('active')
-                    $('#content').load('../../pages/admin/jadwal-periksa/JadwalPeriksa.php');
-                } else if (menu == "menuPoli") {
-                    $('.nav-link').removeClass('active')
-                    $(this).addClass('active')
-                    $('#content').load('../../pages/admin/poli/poli.php');
+                // } else if (menu == "menuJadwalPeriksa") {
+                //     $('.nav-link').removeClass('active')
+                //     $(this).addClass('active')
+                //     $('#content').load('../../pages/admin/jadwal-periksa/JadwalPeriksa.php');
+                // } else if (menu == "menuPoli") {
+                //     $('.nav-link').removeClass('active')
+                //     $(this).addClass('active')
+                //     $('#content').load('../../pages/admin/poli/poli.php');
                 }
             })
         })

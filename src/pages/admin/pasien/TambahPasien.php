@@ -7,7 +7,8 @@ if ($mysqli) {
         $alamat_pasien = $_POST["alamat_pasien"];
         $no_ktp = $_POST["no_ktp"];
         $no_hp = $_POST["no_hp"];
-        $no_rm = $_POST["no_rm"];
+        $newQueueNumber = $lastQueueNumber + 1;
+        $no_rm = $dateNow . "-" . str_pad($newQueueNumber, 3, '0', STR_PAD_LEFT);
 
         $query = "INSERT INTO pasien (nama_pasien, alamat_pasien, no_ktp, no_hp, no_rm) VALUES ('$nama_pasien', '$alamat_pasien', '$no_ktp', '$no_hp', '$no_rm')";
 
@@ -16,7 +17,7 @@ if ($mysqli) {
 ?>
             <script>
                 alert("Data pasien berhasil ditambahkan!")
-                window.location.href = "../../../../index.php"
+                window.location.href = "../index.php"
             </script>
 <?php
             exit();

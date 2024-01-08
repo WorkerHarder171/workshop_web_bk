@@ -17,7 +17,7 @@ if ($mysqli) {
 ?>
             <script>
                 alert("Data dokter berhasil ditambahkan!")
-                window.location.href = "../../../../index.php"
+                window.location.href = "../index.php"
             </script>';
 <?php
             exit();

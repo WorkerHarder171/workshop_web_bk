@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
         <script>
             alert("Data dokter berhasil diubah!");
-            window.location.href = "../../../../index.php";
+            window.location.href = "../index.php"
         </script>
 <?php
         exit();
