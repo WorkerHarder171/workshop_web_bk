@@ -3,10 +3,27 @@ session_start();
 
 $dokter_id = $_SESSION['id']
 ?>
+<!-- Table Header -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2 ">
+            <div class="col-sm-6">
+                <h1 class="m-0">Manajemen Periksa</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="index.php?page=home">Home</a></li>
+                    <li class="breadcrumb-item active">Periksa</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end Table Header -->
 
 <div class="card">
-    <div class="card-header bg-primary">
-        <h3 class="card-title text-white">List Pasien</h3>
+    <div class="card-header">
+        <h3 class="card-title text-dark">List Pasien</h3>
     </div>
     <div class="card-body table-responsive p-0">
         <table class="table table-hover text-nowrap">
@@ -29,7 +46,7 @@ $dokter_id = $_SESSION['id']
                 JOIN jadwal_periksa AS JADWAL_PERIKSA ON DAFTAR_POLI.id_jadwal = JADWAL_PERIKSA.id
                 JOIN dokter AS DOKTER ON JADWAL_PERIKSA.id_dokter = DOKTER.id
                 JOIN poli AS POLI ON DOKTER.id_poli = POLI.id
-                WHERE DOKTER.id = 10";
+                WHERE DOKTER.id = $dokter_id";
 
                 $no = 1;
                 $resultPasien = mysqli_query($mysqli, $sql);

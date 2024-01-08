@@ -172,7 +172,7 @@ function queryTotal($mysqli, $tableName): string
                     <div class="card py-2 px-3 shadow border-0 ">
                         <div class=" d-flex justify-content-between align-items-center">
                             <span class=" text-secondary">Antrian</span>
-                            <span class="info-box-icon bg-success elevation-1 p-2 rounded-lg"><i class="fa-regular fa-hourglass-half" style="color: #ffffff;"></i></span>
+                            <span class="info-box-icon bg-success elevation-1 p-2 rounded-lg"><i class="fas fa-regular fa-hourglass-half" style="color: #ffffff;"></i></span>
                         </div>
                         <div class="body">
                             <span class="info-box-number font-weight-bold display-4"><?= queryTotal($mysqli, "poli"); ?></span>

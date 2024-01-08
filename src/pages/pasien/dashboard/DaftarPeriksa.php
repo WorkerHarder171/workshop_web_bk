@@ -50,7 +50,7 @@ $no_rm = $_SESSION['no_rm'];
                 </div>
                 <div class="form-floating">
                     <label for="keluhan">Keluhan</label>
-                    <textarea class="form-control" placeholder="Tuliskan keluhan anda" id="keluhan" name="keluhan" style="height: 100px"></textarea>
+                    <textarea class="form-control" placeholder="Tuliskan keluhan anda" id="keluhan" name="keluhan" style="height: 100px" required></textarea>
                 </div>
                 <div class="mt-3 form-group d-flex justify-content-end align-items-center">
                     <button type="submit" class="w-auto px-4 btn btn-block rounded-2 text-white bg-primary">Daftar</button>
@@ -81,7 +81,7 @@ $no_rm = $_SESSION['no_rm'];
                     </thead>
                     <tbody>
                         <?php
-                        $sql = "SELECT DAFTAR_POLI.id_pasien, POLI.nama_poli, DOKTER.nama_dokter, JADWAL_PERIKSA.hari, JADWAL_PERIKSA.jam_mulai, JADWAL_PERIKSA.jam_selesai, DAFTAR_POLI.no_antrian
+                        $sql = "SELECT DAFTAR_POLI.id, DAFTAR_POLI.id_pasien, POLI.nama_poli, DOKTER.nama_dokter, JADWAL_PERIKSA.hari, JADWAL_PERIKSA.jam_mulai, JADWAL_PERIKSA.jam_selesai, DAFTAR_POLI.no_antrian
                         FROM daftar_poli AS DAFTAR_POLI
                         JOIN pasien AS PASIEN ON DAFTAR_POLI.id_pasien = PASIEN.id
                         JOIN jadwal_periksa AS JADWAL_PERIKSA ON DAFTAR_POLI.id_jadwal = JADWAL_PERIKSA.id
@@ -90,57 +90,63 @@ $no_rm = $_SESSION['no_rm'];
                         WHERE  DAFTAR_POLI.id_pasien = $pasien_id";
                         $no = 1;
                         $resultPendaftaran = mysqli_query($mysqli, $sql);
-                        while ($rowPeriksa = mysqli_fetch_assoc($resultPendaftaran)) {
+                        while ($row = mysqli_fetch_assoc($resultPendaftaran)) {
                         ?>
                             <tr class="text-center">
                                 <td><?php echo $no++; ?></td>
-                                <td><?php echo $rowPeriksa['nama_poli']; ?></td>
-                                <td><?php echo $rowPeriksa['nama_dokter'] ?></td>
-                                <td><?php echo $rowPeriksa['hari'] ?></td>
-                                <td><?php echo $rowPeriksa['jam_mulai'] ?></td>
-                                <td><?php echo $rowPeriksa['jam_selesai'] ?></td>
-                                <td><?php echo $rowPeriksa['no_antrian'] ?></td>
+                                <td><?php echo $row['nama_poli']; ?></td>
+                                <td><?php echo $row['nama_dokter'] ?></td>
+                                <td><?php echo $row['hari'] ?></td>
+                                <td><?php echo $row['jam_mulai'] ?></td>
+                                <td><?php echo $row['jam_selesai'] ?></td>
+                                <td><?php echo $row['no_antrian'] ?></td>
+
                                 <td class='d-flex align-items-center justify-content-center'>
-                                    <button type='button' class='btn btn-sm btn-primary edit-btn mx-1' data-toggle='modal' data-target='#myModal<?php echo $rowPeriksa['id']; ?>'>
+                                    <button type='button' class='btn btn-sm btn-primary edit-btn mx-1' data-toggle='modal' data-target='#myModal<?php echo $row['id']; ?>'>
                                         Detail
                                     </button>
-                                    <div class='modal fade' id='myModal<?php echo $rowPeriksa['id']; ?>' tabindex="-1" role='dialog' aria-labelledby='editModalLabel' aria-hidden='true'>
+                                    <div class='modal fade' id='myModal<?php echo $row['id']; ?>' tabindex="-1" role='dialog' aria-labelledby='editModalLabel' aria-hidden='true'>
                                         <div class='modal-dialog'>
                                             <!-- Modal content-->
                                             <div class='modal-content'>
-                                                <div class='modal-header'>
+                                                <div class='modal-header bg-primary'>
                                                     <h5 class='modal-title' id='editModalLabel'>Detail Periksa</h5>
-                                                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                                    <button type='button text-white' class='close' data-dismiss='modal' aria-label='Close'>
                                                         <span aria-hidden='true'>&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class='modal-body'>
-                                                    <form method='POST' action='src/pages/admin/dokter/UpdateDokter.php'>
-                                                        <input type="hidden" name="id" value="<?= $rowPeriksa['id']; ?>">
-                                                        <div class='form-group'>
-                                                            <label for='nama_poli'>Nama Poliklinik</label>
-                                                            <p id='nama_poli' name='nama_poli'><?= $rowPeriksa['nama_poli']; ?></p>
-                                                        </div>
-                                                        <div class='form-group'>
-                                                            <label for='nama_dokter'>Nama Dokter</label>
-                                                            <p id='nama_dokter' name='nama_dokter'><?= $rowPeriksa['nama_dokter']; ?></p>
-                                                        </div>
-                                                        <div class='form-group'>
-                                                            <label for='hari'>hari</label>
-                                                            <p id='hari' name='hari'><?= $rowPeriksa['hari']; ?></p>
-                                                        </div>
-                                                        <div class='form-group'>
-                                                            <label for='no_hp'>Jam Praktek</label>
-                                                            <div class="d-flex align-items-center">
-                                                                <p id='jam_mulai' name='jam_mulai'><?= $rowPeriksa['jam_mulai']; ?></p> -
-                                                                <p id='jam_selesai' name='jam_selesai'><?= $rowPeriksa['jam_selesai']; ?></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class='form-group'>
-                                                            <label for='no_hp'>No Antrian</label>
-                                                            <p id='no_antrian' name='no_antrian'><?= $rowPeriksa['no_antrian']; ?></p>
-                                                        </div>
-                                                    </form>
+                                                    <table class="table table-hover text-nowrap">
+                                                        <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="text-left">Nama Poliklinik </td>
+                                                                <td>:</td>
+                                                                <td class="text-left"><?php echo $row['nama_poli']; ?></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-left">Nama Dokter </td>
+                                                                <td>:</td>
+
+                                                                <td class="text-left"><?php echo $row['nama_dokter']; ?></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-left">Hari </td>
+                                                                <td>:</td>
+                                                                <td class="text-left"><?php echo $row['hari']; ?></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-left">Jam Praktek </td>
+                                                                <td>:</td>
+                                                                <td class="text-left"><?php echo $row['jam_mulai']; ?> <span> - </span> <?php echo $row['jam_selesai']; ?></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-left">No Antrian</td>
+                                                                <td>:</td>
+                                                                <td class="text-left"><?php echo $row['no_antrian']; ?></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             </div>
                                         </div>

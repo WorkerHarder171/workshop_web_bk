@@ -11,7 +11,7 @@
 <body>
     <header class="position-absolute z-3 w-100">
         <nav class="p-2 px-5" style="background-color:rgba(255,255,255,02)">
-            <h3 class="mt-3 fw-bold"><span style="color: #293291;">Health</span><span class="text-success">Care</span></h3 class="mt-3">
+            <h3 class="mt-3 fw-bold"><a href="./index.php" class="navbar-brand"><span style="color: #293291;">Health</span><span class="text-success">Care</span></a></h3 class="mt-3">
         </nav>
         <div class="container">
             <div class="row d-flex justify-content-center align-items-center mt-5">

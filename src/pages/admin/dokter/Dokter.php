@@ -96,7 +96,7 @@
                             <tbody>
                                 <?php
                                 include '../../../config/koneksi.php';
-                                $query = "SELECT * FROM dokter LEFT JOIN poli ON dokter.id_poli = poli.id";
+                                $query = "SELECT dokter.id, dokter.nama_dokter, dokter.alamat_dokter, dokter.no_hp, poli.nama_poli FROM dokter LEFT JOIN poli ON dokter.id_poli = poli.id";
                                 $no = 1;
                                 $result = mysqli_query($mysqli, $query);
                                 while ($row = mysqli_fetch_assoc($result)) {
