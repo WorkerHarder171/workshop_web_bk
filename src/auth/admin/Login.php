@@ -61,12 +61,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="form-group my-4 gap-3">
                     <input type="text" class="w-100 px-4 py-3 my-3 rounded-lg border page-link" id="username" name="username" placeholder="username" autocomplete="off">
                     <input type="password" class="w-100 px-4 py-3 my-3 rounded-lg border page-link" id="password" name="password" placeholder="Password">
-                    <!-- <a href="#" class="fst-normal">Lupa Password?</a> -->
-                </div>
-                <p class="text-secondary my-5">Gunakan akun anda yang sudah anda daftarkan sebelumnya untuk bisa melakukan login</p>
-                <div class="form-group d-flex justify-content-between align-items-center">
-                    <a href="./Register.php">Buat Akun</a>
-                    <button type="submit" class="w-25 btn btn-primary btn-block rounded-2">Login</button>
                 </div>
             </form>
         </div>

@@ -95,12 +95,13 @@ $nama_dokter = $_SESSION['username'];
                                     <th>Hari</th>
                                     <th>Jam Mulai</th>
                                     <th>Jam Selesai</th>
+                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                $query = "SELECT JADWAL_PERIKSA.id, JADWAL_PERIKSA.hari, JADWAL_PERIKSA.jam_mulai, JADWAL_PERIKSA.jam_selesai ,POLI.nama_poli
+                                $query = "SELECT JADWAL_PERIKSA.id, JADWAL_PERIKSA.hari, JADWAL_PERIKSA.jam_mulai, JADWAL_PERIKSA.jam_selesai, JADWAL_PERIKSA.status_jadwal ,POLI.nama_poli
                                 FROM jadwal_periksa as JADWAL_PERIKSA
                                 JOIN dokter as DOKTER ON JADWAL_PERIKSA.id_dokter =DOKTER.id
                                 JOIN poli as POLI ON DOKTER.id_poli = POLI.id
@@ -115,9 +116,11 @@ $nama_dokter = $_SESSION['username'];
                                         <td><?php echo $row['hari'] ?></td>
                                         <td><?php echo $row['jam_mulai'] ?></td>
                                         <td><?php echo $row['jam_selesai'] ?></td>
+                                        <td class="<?php echo ($row['status_jadwal'] == 1)? 'text-success' : 'text-danger'?>"><?php echo( $row['status_jadwal'] == 1) ? 'AKTIF' : 'TIDAK AKTIF' ?></td>
+
                                         <td class='d-flex align-items-center justify-content-center'>
                                             <button type='button' class='btn btn-sm btn-warning edit-btn mx-1' data-toggle='modal' data-target='#myModal<?php echo $row['id']; ?>'>Edit</button>
-                                            <a href='../dokter/jadwal/HapusJadwal.php?id=<?php echo $row['id']; ?>' class='btn btn-sm btn-danger mx-1' onclick='return confirm("Anda yakin ingin hapus?");'>Hapus</a>
+                                            <!-- <a href='../dokter/jadwal/HapusJadwal.php?id=<?php echo $row['id']; ?>' class='btn btn-sm btn-danger mx-1' onclick='return confirm("Anda yakin ingin hapus?");'>Hapus</a> -->
                                             <!-- Modal Edit Obat  -->
                                             <div class='modal fade' id='myModal<?php echo $row['id']; ?>' tabindex="-1" role='dialog' aria-labelledby='editModalLabel' aria-hidden='true'>
                                                 <div class='modal-dialog'>
@@ -139,8 +142,7 @@ $nama_dokter = $_SESSION['username'];
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="hari">Hari</label>
-
-                                                                    <select class="form-control" id="hari" name="hari" required>
+                                                                    <select class="form-control" id="hari" name="hari" disabled required>
                                                                         <option value="Senin" <?php if ($row['hari'] == 'Senin') echo 'selected'; ?>>Senin</option>
                                                                         <option value="Selasa" <?php if ($row['hari'] == 'Selasa') echo 'selected'; ?>>Selasa</option>
                                                                         <option value="Rabu" <?php if ($row['hari'] == 'Rabu') echo 'selected'; ?>>Rabu</option>
@@ -152,12 +154,23 @@ $nama_dokter = $_SESSION['username'];
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="jam_mulai">Jam Mulai</label>
-                                                                    <input type="time" class="form-control" id="jam_mulai" name="jam_mulai" value="<?php echo $row['jam_mulai'] ?>" required>
+                                                                    <input type="time" class="form-control" id="jam_mulai" name="jam_mulai" value="<?php echo $row['jam_mulai'] ?>" disabled required>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="jam_selesai">Jam Selesai</label>
-                                                                    <input type="time" class="form-control" id="jam_selesai" name="jam_selesai" value="<?php echo $row['jam_selesai'] ?>" required>
+                                                                    <input type="time" class="form-control" id="jam_selesai" name="jam_selesai" value="<?php echo $row['jam_selesai'] ?>" disabled required>
                                                                 </div>
+                                                                <div class="form-group">
+                                                                    <label for="status">Status</label>
+                                                                    <label for="status">Status</label>
+                                                                    <select class="form-control" id="status" name="status_jadwal" required>
+                                                                        <option value="1" <?php if ($row['status_jadwal'] == 1) echo 'selected'; ?>>Aktif</option>
+                                                                        <option value="0" <?php if ($row['status_jadwal'] == 0) echo 'selected'; ?>>Tidak Aktif</option>
+                                                                    </select>
+
+                                                                </div>
+
+
                                                                 <button type="submit" class="btn btn-primary">Update</button>
                                                             </form>
                                                             <!-- end Modal Edit Obat -->
